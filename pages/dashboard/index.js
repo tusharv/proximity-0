@@ -45,7 +45,6 @@ export default function Dashboard({ userData }) {
         <>
             <Head>
                 <title>{username} - Dashboard</title>
-
             </Head>
             <div className="dashboard-head">
                 <span>
@@ -57,7 +56,6 @@ export default function Dashboard({ userData }) {
                 </span>
             </div>
             <div>
-                <div>{typeof item}</div>
                 <table>
                     <thead>
                         <tr>
