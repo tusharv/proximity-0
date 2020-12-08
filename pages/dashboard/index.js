@@ -14,7 +14,7 @@ export default function Dashboard({ userData }) {
         if (item) {
             return;
         }
-        
+
         var requestOptions = {
             method: 'GET',
             headers: new Headers({
@@ -67,9 +67,9 @@ export default function Dashboard({ userData }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {item.map((i) => {
+                        {/* {item.map((i) => {
                             return <tr key={i.id} data-id={i.id}><td>{i.name}</td><td>{i.email}</td><td>{i.role}</td></tr>
-                        })}
+                        })} */}
                     </tbody>
                 </table>
             </div>
