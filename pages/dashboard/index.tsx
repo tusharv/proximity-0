@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, MouseEvent } from "react";
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -15,7 +15,6 @@ export default function Dashboard({ userData }) {
         localStorage.removeItem('user');
 
         router.push('/login/')
-        return 0;
     }
 
     const submit = () => {
