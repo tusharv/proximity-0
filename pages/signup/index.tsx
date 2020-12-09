@@ -25,7 +25,12 @@ export default function Signup() {
 
         fetch("https://assign.leadwithcode.com/user", requestOptions)
           .then(response => response.text())
-          .then(result => console.log(result))
+          .then(result => {
+            if(result === "Email already exists") {
+                alert(result);
+                return 0;
+            }
+          })
           .catch(error => console.log('error', error))
     }
     
