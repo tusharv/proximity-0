@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 
 export default function Dashboard({ userData }) {
@@ -7,8 +8,17 @@ export default function Dashboard({ userData }) {
     const [userrole, setUserRole] = useState("")
     const [token, setAuthToken] = useState("")
     const [item, setItem] = useState("")
+    const router = useRouter()
 
-    const submit = (e) => {
+    const logout = (e:MouseEvent)=> {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+
+        router.push('/login/')
+        return 0;
+    }
+
+    const submit = () => {
         console.log(item);
         // Hack to aviod multiple calls
         if (item) {
@@ -33,12 +43,17 @@ export default function Dashboard({ userData }) {
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem('user'));
-        setUserName(userData.name)
-        setUserRole(userData.role)
-        setAuthToken(localStorage.getItem('token'))
-
-        console.log("useEffect");
-        submit()
+        if(userData) {
+            setUserName(userData.name)
+            setUserRole(userData.role)
+            setAuthToken(localStorage.getItem('token'))
+    
+            console.log("useEffect");
+            submit()
+        } else {
+            router.push('/login/')
+        }
+       
     })
 
     return (
@@ -52,7 +67,7 @@ export default function Dashboard({ userData }) {
                 </span>
                 <span>
                     <button>Change Password</button>
-                    <button>Logout</button>
+                    <button onClick={logout}>Logout</button>
                 </span>
             </div>
             <div>

@@ -26,13 +26,13 @@ export default function Signup() {
         fetch("https://assign.leadwithcode.com/user", requestOptions)
           .then(response => response.text())
           .then(result => console.log(result))
-          .catch(error => console.log('error', error));
+          .catch(error => console.log('error', error))
     }
     
     return (
         <>
             <div className="container">
-                <form mothod="POST" onSubmit={submit}>
+                <form method="POST" onSubmit={submit}>
                     <h1>Sign Up</h1>
                     <label htmlFor="name">
                         Name

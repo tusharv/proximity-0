@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -38,9 +38,8 @@ export default function Login() {
 
     }
 
-    const submit = (e) => {
+    const submit = (e: FormEvent) => {
         e.preventDefault();
-
         if (validate()) {
             var requestOptions = {
                 method: 'POST',
@@ -53,7 +52,7 @@ export default function Login() {
                 .then(result => {
                     if(result === "Password does not match" || result === "No such combination of email and password") {
                         alert(result);
-                        return;
+                        return 0;
                     }
 
                     const data = JSON.parse(result)
@@ -68,7 +67,7 @@ export default function Login() {
     return (
         <>
             <div className="container">
-                <form mothod="POST" onSubmit={submit}>
+                <form method="POST" onSubmit={submit}>
                     <h1>Login</h1>
                     <label htmlFor="email">
                         Email
