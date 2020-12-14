@@ -10,6 +10,13 @@ export default function Dashboard({ userData }) {
     const [item, setItem] = useState("")
     const router = useRouter()
 
+    interface UserList {
+        id: string;
+        name: string;
+        email: string;
+        role: string;
+    }
+
     const logout = (e:MouseEvent)=> {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -79,9 +86,14 @@ export default function Dashboard({ userData }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {item.map((i) => {
+                        {
+                            item
+                            ? [...item].map((i: any) => {
                             return <tr key={i.id} data-id={i.id}><td>{i.name}</td><td>{i.email}</td><td>{i.role}</td></tr>
-                        })} */}
+                            })
+                            :
+                            <tr><td>Loading ...</td></tr>
+                        }
                     </tbody>
                 </table>
             </div>
